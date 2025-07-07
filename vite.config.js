@@ -9,9 +9,15 @@ export default defineConfig({
   ],
    theme: {
     extend: {
-      // Custom animation for the blob effect in UserProfileCard
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        '3xl': '0 20px 50px rgba(0, 0, 0, 0.15)',
+      },
       animation: {
-        blob: "blob 7s infinite",
+        blob: "blob 7s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+        'bounce-horizontal': 'bounce-horizontal 1s infinite',
       },
       keyframes: {
         blob: {
@@ -26,6 +32,16 @@ export default defineConfig({
           },
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+        'bounce-horizontal': {
+          '0%, 100%': {
+            transform: 'translateX(0)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateX(5px)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
           },
         },
       },
